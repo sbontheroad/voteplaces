@@ -5,7 +5,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 //router
-import { Route, BrowserRouter, Switch, Scroll } from "react-router-dom";
+import { Route, HashRouter, Switch, Scroll } from "react-router-dom";
 
 //redux
 import { createStore, applyMiddleware } from "redux";
@@ -28,7 +28,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="app-wrapper">
-        <BrowserRouter>
+        <HashRouter>
           <ScrollToTop>
             <div>
               <Navbar />
@@ -39,7 +39,7 @@ class App extends React.Component {
               </Switch>
             </div>
           </ScrollToTop>
-        </BrowserRouter>
+        </HashRouter>
       </div>
     )
   }
