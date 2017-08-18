@@ -1,13 +1,16 @@
 import React from "react";
 import autoBind from "react-autobind";
 
+//redux
+import { connect } from "react-redux";
+import * as actionCreators from "../actions";
+
 import { Link } from "react-router-dom";
 
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isHidden: true,
       opacity: 0
     }
     autoBind(this);
@@ -20,15 +23,18 @@ class Navbar extends React.Component {
     }
   }
   componentWillMount() {
-    if(this.props.isShowingHomeDesc) {
+    if(!this.props.isShowingHomeDesc) {
+        console.log("Here")
+      this.setState({
+        opacity: 1
+      });
+    } else {
+      console.log("Here 2")
       this.setState({
         opacity: 0
       })
-    } else {
-      this.setState({
-        opacity: 1
-      })
     }
+    this.checkRoute();
   }
   componentDidMount() {
     window.addEventListener('scroll', this.hideNav);
@@ -37,7 +43,8 @@ class Navbar extends React.Component {
     window.removeEventListener('scroll', this.hideNav);
   }
   checkRoute() {
-    if(document.location.pathname !== "/" && this.state.opacity !== 1) {
+    if( ! (document.location.href.indexOf("#") + 2 > document.location.href.length - 1) && this.state.opacity != 1) {
+      console.log("Here 3")
       this.setState({
         opacity: 1
       })
@@ -55,4 +62,4 @@ class Navbar extends React.Component {
   }
 }
 
-export default Navbar;
+export default connect((state) => state, actionCreators)(Navbar);
