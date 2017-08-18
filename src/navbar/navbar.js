@@ -24,6 +24,10 @@ class Navbar extends React.Component {
       this.setState({
         opacity: 0
       })
+    } else {
+      this.setState({
+        opacity: 1
+      })
     }
   }
   componentDidMount() {
