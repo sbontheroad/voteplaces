@@ -26,7 +26,7 @@ class Navbar extends React.Component {
     window.removeEventListener('scroll', this.hideNav);
   }
   checkRoute() {
-    if(document.location.pathname !== "/" && this.state.opacity !== 1) {
+    if(document.location.pathname !== "/#/" && this.state.opacity !== 1) {
       this.setState({
         opacity: 1
       })
