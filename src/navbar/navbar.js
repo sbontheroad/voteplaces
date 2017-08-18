@@ -19,6 +19,13 @@ class Navbar extends React.Component {
       })
     }
   }
+  componentWillMount() {
+    if(this.props.isShowingHomeDesc) {
+      this.setState({
+        opacity: 0
+      })
+    }
+  }
   componentDidMount() {
     window.addEventListener('scroll', this.hideNav);
   }
@@ -26,7 +33,7 @@ class Navbar extends React.Component {
     window.removeEventListener('scroll', this.hideNav);
   }
   checkRoute() {
-    if(document.location.pathname !== "/#/" && this.state.opacity !== 1) {
+    if(document.location.pathname !== "/" && this.state.opacity !== 1) {
       this.setState({
         opacity: 1
       })
